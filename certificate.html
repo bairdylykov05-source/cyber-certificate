@@ -156,6 +156,18 @@ body{
 .cyber-bg .b4{right:82px;bottom:165px;text-align:right}
 
 .top,.topline,h1,.sub,.name,.meta,.copy,.results,.bottom,.signature{position:relative;z-index:1}
+
+.university{
+  position:relative;z-index:1;
+  text-align:center;
+  color:#234f82;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
 .top{
   color:var(--blue);font-size:13px;font-weight:900;letter-spacing:2.2px;
   text-transform:uppercase;text-align:center
@@ -287,6 +299,7 @@ h1{
       <div class="binary b3">1110010<br>0100111<br>0011001</div>
       <div class="binary b4">1010101<br>0101001<br>1100011</div>
     </div>
+    <div class="university">Краснодарский университет МВД России</div>
     <div class="top">Кафедра информационной безопасности</div>
     <div class="topline"></div>
     <h1>СЕРТИФИКАТ</h1>
@@ -520,7 +533,10 @@ function downloadCertificate(){
 
   ctx.textAlign='center';
   ctx.fillStyle='#0a4ea3';ctx.font='700 27px Arial';
-  ctx.fillText('КАФЕДРА ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ',800,125);
+  ctx.fillStyle='#234f82';ctx.font='800 24px Arial';
+  ctx.fillText('КРАСНОДАРСКИЙ УНИВЕРСИТЕТ МВД РОССИИ',800,105);
+  ctx.fillStyle='#0a4ea3';ctx.font='700 27px Arial';
+  ctx.fillText('КАФЕДРА ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ',800,140);
 
   ctx.fillStyle='#07356f';ctx.font='900 92px Arial';ctx.fillText('СЕРТИФИКАТ',800,260);
   ctx.fillStyle='#5e7b99';ctx.font='30px Arial';ctx.fillText('о прохождении интерактивного КИБЕР-КВЕСТА',800,315);
