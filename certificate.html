@@ -42,6 +42,7 @@ body{
   color:#fff;box-shadow:0 8px 22px rgba(10,78,163,.25)
 }
 .download:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.actions button:disabled{opacity:.65;cursor:wait;transform:none!important}
 .print{
   border:1px solid #8eb8e4;background:#fff;color:var(--blue-dark);
   box-shadow:0 6px 18px rgba(18,103,199,.10)
@@ -183,12 +184,17 @@ h1{
 }
 </style>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 <body>
 <div class="shell" id="shell">
   <div class="actions">
-    <button class="download" onclick="downloadCertificate()">Скачать сертификат</button>
-    <button class="print" onclick="window.print()">Распечатать / сохранить PDF</button>
+    <button class="download" onclick="downloadCertificate()">Скачать PNG</button>
+    <button class="download" id="pdfDownloadBtn" onclick="downloadPdfCertificate()">Скачать PDF</button>
+    <button class="print" onclick="window.print()">Печать</button>
   </div>
 
   <div class="card" id="card">
@@ -224,7 +230,7 @@ h1{
 
   <div class="note">
     Сертификат сформирован по данным, переданным из КИБЕР-КВЕСТА.
-    Для PDF используйте кнопку «Распечатать / сохранить PDF».
+    Для готового PDF нажмите «Скачать PDF». Кнопка «Печать» открывает стандартное окно печати браузера.
   </div>
 </div>
 
@@ -247,6 +253,70 @@ function showError(){
   document.getElementById('shell').innerHTML=
     '<div class="error"><h2>Сертификат не найден</h2><p>Ссылка повреждена или открыта без данных сертификата.</p></div>';
 }
+
+async function downloadPdfCertificate(){
+  if(!certificateData) return;
+
+  const btn=document.getElementById('pdfDownloadBtn');
+  const oldText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='Создание PDF...';
+
+  try{
+    const card=document.getElementById('card');
+
+    // Рендерим именно область сертификата, без кнопок и пояснений.
+    const canvas=await html2canvas(card,{
+      scale:2.2,
+      backgroundColor:'#ffffff',
+      useCORS:true,
+      logging:false
+    });
+
+    const imgData=canvas.toDataURL('image/jpeg',0.98);
+    const { jsPDF }=window.jspdf;
+
+    // A4 landscape: 297 x 210 мм.
+    const pdf=new jsPDF({
+      orientation:'landscape',
+      unit:'mm',
+      format:'a4',
+      compress:true
+    });
+
+    const pageW=297;
+    const pageH=210;
+    const margin=5;
+    const maxW=pageW-margin*2;
+    const maxH=pageH-margin*2;
+
+    const imgRatio=canvas.width/canvas.height;
+    let w=maxW;
+    let h=w/imgRatio;
+
+    if(h>maxH){
+      h=maxH;
+      w=h*imgRatio;
+    }
+
+    const x=(pageW-w)/2;
+    const y=(pageH-h)/2;
+
+    pdf.addImage(imgData,'JPEG',x,y,w,h,undefined,'FAST');
+
+    const safe=(certificateData.participant.surname+'_'+certificateData.participant.name)
+      .replace(/[^А-Яа-яA-Za-z0-9_-]/g,'_');
+
+    pdf.save(`Сертификат_${safe}.pdf`);
+  }catch(err){
+    console.error(err);
+    alert('Не удалось создать PDF. Проверьте интернет-соединение и попробуйте ещё раз.');
+  }finally{
+    btn.disabled=false;
+    btn.textContent=oldText;
+  }
+}
+
 function loadCertificate(){
   const raw=new URLSearchParams(location.search).get('certificate');
   if(!raw){showError();return}
