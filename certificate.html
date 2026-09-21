@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Сертификат КИБЕР-КВЕСТА</title>
+
+<style>
+:root{
+  --blue:#0a4ea3;
+  --blue-2:#1267c7;
+  --blue-3:#2b7fd8;
+  --blue-dark:#07356f;
+  --blue-soft:#eaf3ff;
+  --blue-pale:#f5f9ff;
+  --line:#9fc7ef;
+  --text:#17314f;
+  --muted:#6c7f93;
+  --white:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  min-height:100vh;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(43,127,216,.14),transparent 34%),
+    radial-gradient(circle at 88% 90%,rgba(10,78,163,.10),transparent 32%),
+    linear-gradient(180deg,#eef6ff 0%,#f8fbff 55%,#edf5ff 100%);
+}
+.shell{max-width:1120px;margin:0 auto;padding:26px}
+.actions{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 20px
+}
+.actions button{
+  border-radius:11px;padding:12px 18px;font-weight:800;cursor:pointer;
+  font-size:14px;transition:.18s ease
+}
+.download{
+  border:0;background:linear-gradient(135deg,var(--blue),var(--blue-2));
+  color:#fff;box-shadow:0 8px 22px rgba(10,78,163,.25)
+}
+.download:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.print{
+  border:1px solid #8eb8e4;background:#fff;color:var(--blue-dark);
+  box-shadow:0 6px 18px rgba(18,103,199,.10)
+}
+.print:hover{border-color:var(--blue-2);background:#f8fbff}
+
+.card{
+  position:relative;overflow:hidden;width:100%;
+  aspect-ratio:1.414/1;min-height:600px;
+  border:3px solid var(--blue);
+  border-radius:18px;
+  background:
+    linear-gradient(135deg,rgba(18,103,199,.035),transparent 30%),
+    linear-gradient(315deg,rgba(43,127,216,.055),transparent 32%),
+    #fff;
+  padding:58px 72px 62px;
+  box-shadow:0 28px 70px rgba(12,70,135,.18)
+}
+.card:before{
+  content:"";position:absolute;inset:18px;border:1px solid var(--line);
+  border-radius:12px;pointer-events:none
+}
+.card:after{
+  content:"";position:absolute;left:0;right:0;top:0;height:14px;
+  background:linear-gradient(90deg,var(--blue-dark),var(--blue),var(--blue-3),var(--blue))
+}
+.corner{
+  position:absolute;width:220px;height:220px;border-radius:50%;
+  border:34px solid rgba(18,103,199,.08);pointer-events:none
+}
+.corner.c1{left:-105px;top:-105px}
+.corner.c2{right:-105px;bottom:-105px}
+.gridmark{
+  position:absolute;right:48px;top:42px;width:120px;height:120px;opacity:.08;
+  background-image:
+    linear-gradient(var(--blue) 1px,transparent 1px),
+    linear-gradient(90deg,var(--blue) 1px,transparent 1px);
+  background-size:16px 16px;transform:rotate(8deg)
+}
+.top{
+  position:relative;z-index:1;
+  color:var(--blue);font-size:13px;font-weight:900;letter-spacing:2.2px;
+  text-transform:uppercase;text-align:center
+}
+.topline{
+  width:160px;height:4px;border-radius:999px;margin:13px auto 0;
+  background:linear-gradient(90deg,var(--blue),var(--blue-3))
+}
+h1{
+  position:relative;z-index:1;
+  margin:28px 0 4px;
+  font-size:clamp(48px,7vw,84px);
+  letter-spacing:5px;text-align:center;
+  color:var(--blue-dark);line-height:1
+}
+.sub{
+  position:relative;z-index:1;text-align:center;
+  color:#5e7b99;font-size:16px;font-weight:600
+}
+.name{
+  position:relative;z-index:1;
+  margin:36px auto 8px;text-align:center;
+  font-size:clamp(32px,5vw,56px);font-weight:900;
+  color:var(--blue);line-height:1.05
+}
+.name:after{
+  content:"";display:block;width:min(440px,72%);height:2px;margin:14px auto 0;
+  background:linear-gradient(90deg,transparent,var(--blue-2),transparent)
+}
+.meta{
+  position:relative;z-index:1;text-align:center;
+  color:#5c7289;font-size:16px;font-weight:600
+}
+.copy{
+  position:relative;z-index:1;max-width:800px;margin:27px auto 24px;
+  text-align:center;color:#344c65;font-size:18px;line-height:1.55
+}
+.copy b{color:var(--blue-dark)}
+.results{
+  position:relative;z-index:1;
+  display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px auto
+}
+.pill{
+  min-width:165px;padding:13px 18px;
+  border:1px solid #b8d5f1;border-radius:14px;
+  background:linear-gradient(180deg,#f9fcff,#edf6ff);
+  text-align:center;box-shadow:0 7px 18px rgba(18,103,199,.08)
+}
+.pill b{
+  display:block;font-size:27px;color:var(--blue);line-height:1.1
+}
+.pill span{
+  color:#6c8197;font-size:11px;text-transform:uppercase;
+  letter-spacing:1.1px;font-weight:800
+}
+.bottom{
+  position:absolute;z-index:1;left:72px;right:72px;bottom:44px;
+  display:flex;justify-content:space-between;gap:30px;
+  color:#6f8297;font-size:13px
+}
+.bottom strong{
+  display:block;color:var(--blue-dark);margin-bottom:5px;font-size:15px
+}
+.signature{
+  position:absolute;left:50%;bottom:40px;transform:translateX(-50%);
+  width:220px;text-align:center;color:#7890a8;font-size:12px;z-index:1
+}
+.signature:before{
+  content:"";display:block;height:1px;background:#8eb8e4;margin-bottom:7px
+}
+.note{
+  text-align:center;color:#6e8195;font-size:13px;line-height:1.5;margin:17px 0
+}
+.error{
+  max-width:720px;margin:100px auto;padding:30px;text-align:center;
+  border:1px solid #d4e4f4;border-radius:16px;background:#fff;
+  box-shadow:0 16px 44px rgba(10,78,163,.12)
+}
+
+@media(max-width:700px){
+  .shell{padding:12px}
+  .card{
+    aspect-ratio:auto;min-height:780px;padding:42px 24px 38px
+  }
+  h1{font-size:42px;letter-spacing:2px}
+  .bottom{left:24px;right:24px;bottom:28px;flex-direction:column;gap:10px}
+  .signature{display:none}
+}
+
+@media print{
+  body{background:#fff}
+  .shell{padding:0;max-width:none}
+  .actions,.note{display:none!important}
+  .card{
+    width:100vw;height:100vh;min-height:0;border-radius:0;box-shadow:none;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact
+  }
+  @page{size:A4 landscape;margin:0}
+}
+</style>
+
+</head>
+<body>
+<div class="shell" id="shell">
+  <div class="actions">
+    <button class="download" onclick="downloadCertificate()">Скачать сертификат</button>
+    <button class="print" onclick="window.print()">Распечатать / сохранить PDF</button>
+  </div>
+
+  <div class="card" id="card">
+    <div class="corner c1"></div>
+    <div class="corner c2"></div>
+    <div class="gridmark"></div>
+    <div class="top">Кафедра информационной безопасности</div>
+    <div class="topline"></div>
+    <h1>СЕРТИФИКАТ</h1>
+    <div class="sub">о прохождении интерактивного КИБЕР-КВЕСТА</div>
+
+    <div class="name" id="name">—</div>
+    <div class="meta" id="meta">—</div>
+
+    <div class="copy">
+      подтверждается, что участник прошёл практическую работу
+      <b>«КИБЕР-КВЕСТ»</b> от кафедры информационной безопасности
+      и получил следующий результат:
+    </div>
+
+    <div class="results">
+      <div class="pill"><b id="percent">0%</b><span>результат</span></div>
+      <div class="pill"><b id="score">0 / 90</b><span>баллы</span></div>
+      <div class="pill"><b id="grade">2</b><span>оценка</span></div>
+    </div>
+
+    <div class="signature">Кафедра информационной безопасности</div>
+    <div class="bottom">
+      <div><strong id="date">—</strong>Дата прохождения</div>
+      <div style="text-align:right"><strong id="certId">—</strong>Номер сертификата</div>
+    </div>
+  </div>
+
+  <div class="note">
+    Сертификат сформирован по данным, переданным из КИБЕР-КВЕСТА.
+    Для PDF используйте кнопку «Распечатать / сохранить PDF».
+  </div>
+</div>
+
+<script>
+let certificateData=null;
+
+function decodeCertificateData(str){
+  try{
+    const b64=str.replace(/-/g,'+').replace(/_/g,'/');
+    const padded=b64+'='.repeat((4-b64.length%4)%4);
+    const binary=atob(padded);
+    const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }catch(e){return null}
+}
+function fullName(p){
+  return [p.surname,p.name,p.patronymic].filter(Boolean).join(' ');
+}
+function showError(){
+  document.getElementById('shell').innerHTML=
+    '<div class="error"><h2>Сертификат не найден</h2><p>Ссылка повреждена или открыта без данных сертификата.</p></div>';
+}
+function loadCertificate(){
+  const raw=new URLSearchParams(location.search).get('certificate');
+  if(!raw){showError();return}
+  const d=decodeCertificateData(raw);
+  if(!d || !d.participant){showError();return}
+  certificateData=d;
+
+  document.getElementById('name').textContent=fullName(d.participant);
+  document.getElementById('meta').textContent=
+    `${d.participant.schoolClass} класс · ${d.participant.school}`;
+  document.getElementById('percent').textContent=`${d.percent}%`;
+  document.getElementById('score').textContent=`${d.score} / ${d.maxScore}`;
+  document.getElementById('grade').textContent=d.grade;
+  document.getElementById('date').textContent=d.date;
+  document.getElementById('certId').textContent=d.certificateId;
+}
+function downloadCertificate(){
+  const d=certificateData;
+  if(!d)return;
+
+  const canvas=document.createElement('canvas');
+  canvas.width=1600;canvas.height=1131;
+  const ctx=canvas.getContext('2d');
+
+  ctx.fillStyle='#ffffff';ctx.fillRect(0,0,1600,1131);
+  ctx.fillStyle='#0a4ea3';ctx.fillRect(0,0,1600,18);
+  ctx.strokeStyle='#0a4ea3';ctx.lineWidth=6;ctx.strokeRect(35,35,1530,1061);
+  ctx.strokeStyle='#9fc7ef';ctx.lineWidth=2;ctx.strokeRect(58,58,1484,1015);
+
+  ctx.textAlign='center';
+  ctx.fillStyle='#0a4ea3';ctx.font='700 27px Arial';
+  ctx.fillText('КАФЕДРА ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ',800,125);
+
+  ctx.fillStyle='#07356f';ctx.font='900 92px Arial';ctx.fillText('СЕРТИФИКАТ',800,260);
+  ctx.fillStyle='#5e7b99';ctx.font='30px Arial';ctx.fillText('о прохождении интерактивного КИБЕР-КВЕСТА',800,315);
+
+  ctx.fillStyle='#0a4ea3';ctx.font='900 58px Arial';
+  ctx.fillText(fullName(d.participant).toUpperCase(),800,455);
+
+  ctx.fillStyle='#5c7289';ctx.font='30px Arial';
+  ctx.fillText(`${d.participant.schoolClass} класс · ${d.participant.school}`,800,510);
+
+  ctx.fillStyle='#344c65';ctx.font='30px Arial';
+  ctx.fillText('прошёл практическую работу «КИБЕР-КВЕСТ»',800,610);
+  ctx.fillText('от кафедры информационной безопасности',800,654);
+
+  ctx.fillStyle='#0a4ea3';ctx.font='900 43px Arial';
+  ctx.fillText(`РЕЗУЛЬТАТ: ${d.percent}%   ·   ${d.score} ИЗ ${d.maxScore} БАЛЛОВ   ·   ОЦЕНКА ${d.grade}`,800,770);
+
+  ctx.textAlign='left';ctx.fillStyle='#07356f';ctx.font='700 25px Arial';ctx.fillText(d.date,90,1000);
+  ctx.fillStyle='#6f8297';ctx.font='21px Arial';ctx.fillText('Дата прохождения',90,1032);
+
+  ctx.textAlign='right';ctx.fillStyle='#07356f';ctx.font='700 25px Arial';ctx.fillText(d.certificateId,1510,1000);
+  ctx.fillStyle='#6f8297';ctx.font='21px Arial';ctx.fillText('Номер сертификата',1510,1032);
+
+  const a=document.createElement('a');
+  const safe=(d.participant.surname+'_'+d.participant.name).replace(/[^А-Яа-яA-Za-z0-9_-]/g,'_');
+  a.download=`Сертификат_${safe}.png`;
+  a.href=canvas.toDataURL('image/png');
+  a.click();
+}
+loadCertificate();
+</script>
+</body>
+</html>
