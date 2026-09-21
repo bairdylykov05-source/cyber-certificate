@@ -309,7 +309,7 @@ body {
 .signature {
   position:absolute;
   left:50%;
-  bottom:34px;
+  bottom:18px;
   transform:translateX(-50%);
   color:#8b7758;
   font-size:12px;
@@ -747,7 +747,7 @@ async function downloadCertificate() {
   ctx.textAlign = 'center';
   ctx.fillStyle = '#8b7758';
   ctx.font = '18px Arial';
-  ctx.fillText('Кафедра информационной безопасности', 800, 1054);
+  ctx.fillText('Кафедра информационной безопасности', 800, 1070);
 
   const safe = (d.participant.surname + '_' + d.participant.name).replace(/[^А-Яа-яA-Za-z0-9_-]/g,'_');
   const a = document.createElement('a');
