@@ -189,8 +189,7 @@ body {
 .meta,
 .copy,
 .results,
-.footer,
-.signature {
+.footer {
   position:relative;
   z-index:1;
 }
@@ -306,16 +305,6 @@ body {
   text-transform:uppercase;
 }
 
-.signature {
-  position:absolute;
-  left:50%;
-  bottom:18px;
-  transform:translateX(-50%);
-  color:#8b7758;
-  font-size:12px;
-  z-index:1;
-}
-
 .footer {
   position:absolute;
   left:56px;
@@ -422,10 +411,6 @@ body {
     text-align:right;
   }
 
-  .signature {
-    display:block;
-  }
-
   .note {
     font-size:11px;
     margin-top:10px;
@@ -521,8 +506,6 @@ body {
       <div class="pill"><b id="score">0 / 90</b><span>баллы</span></div>
       <div class="pill"><b id="grade">2</b><span>оценка</span></div>
     </div>
-
-    <div class="signature">Кафедра информационной безопасности</div>
 
     <div class="footer">
       <div class="footer-block">
@@ -827,11 +810,6 @@ async function downloadCertificate() {
   ctx.font = '21px Arial';
   ctx.fillText('Номер сертификата', 1530, 1050);
 
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#8b7758';
-  ctx.font = '18px Arial';
-  ctx.fillText('Кафедра информационной безопасности', 800, 1070);
-
   const safe = (d.participant.surname + '_' + d.participant.name).replace(/[^А-Яа-яA-Za-z0-9_-]/g,'_');
   const a = document.createElement('a');
   a.download = `Сертификат_${safe}.png`;
@@ -888,8 +866,6 @@ async function downloadPdfCertificate() {
         const right=doc.querySelector('.footer-block.right');
         if(right) right.style.textAlign='right';
 
-        const signature=doc.querySelector('.signature');
-        if(signature) signature.style.display='block';
       }
     });
     const imgData = canvas.toDataURL('image/jpeg', 0.98);
