@@ -593,7 +593,7 @@ function loadCertificate() {
   certificateData = d;
 
   document.getElementById('name').textContent = fullName(d.participant);
-  document.getElementById('meta').textContent = `${d.participant.schoolClass} класс · ${d.participant.school}`;
+  document.getElementById('meta').textContent = `${d.participant.schoolClass} · ${d.participant.school}`;
   document.getElementById('percent').textContent = `${d.percent}%`;
   document.getElementById('score').textContent = `${d.score} / ${d.maxScore}`;
   document.getElementById('grade').textContent = d.grade;
@@ -758,7 +758,7 @@ async function downloadCertificate() {
 
   ctx.fillStyle = '#6b7587';
   ctx.font = '700 30px Arial';
-  ctx.fillText(`${d.participant.schoolClass} класс · ${d.participant.school}`, 800, 656);
+  ctx.fillText(`${d.participant.schoolClass} · ${d.participant.school}`, 800, 656);
 
   ctx.strokeStyle = '#d4b06b';
   ctx.lineWidth = 2;
